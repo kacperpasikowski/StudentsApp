@@ -7,9 +7,14 @@ This is a student project application built with .NET for the backend and Angula
 - **Password:** Admin@123
 
 ## Features
-- **Manage Students:** Add, delete, and update student information.
-- **Course Enrollment:** Enroll students in various courses.
-- **User Roles:** Change roles of users within the system.
+- **User Authentication:**
+  - Login and registration functionality for users.
+- **Manage Students:**
+  - Add, delete, and update student information.
+- **Course Enrollment:**
+  - Enroll students in various courses.
+- **User Roles:**
+  - Change roles of users within the system.
 
 ## Getting Started
 
@@ -40,12 +45,16 @@ This is a student project application built with .NET for the backend and Angula
       ```
     - Run the Angular application:
       ```sh
-      npm run ng serve
+      ng serve
       ```
 
 ### How It Works
 
-Once the application is running, you can log in as an administrator using the provided credentials. The administrator has the following capabilities:
+Once the application is running, you can log in or register as a new user. The administrator can log in using the provided credentials. The administrator has the following capabilities:
+
+- **User Authentication:**
+  - Users can register for a new account.
+  - Users can log in to access the system.
 
 - **Manage Students:**
   - Add new students to the system.
@@ -53,6 +62,7 @@ Once the application is running, you can log in as an administrator using the pr
   - Delete students from the system.
 
 - **Course Enrollment:**
+  - Add new course to the system.
   - Enroll students in different courses.
   - View enrolled courses for each student.
 
