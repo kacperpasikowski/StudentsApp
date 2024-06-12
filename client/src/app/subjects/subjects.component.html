@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="d-flex">
+      <h2 class="mb-4">Lista Przedmiotów</h2>
+      <button class="btn btn-primary ms-auto mb-3" (click)="toggleAddSubjectForm()">
+        {{ showAddSubjectForm ? 'Pokaż listę przedmiotów' : 'Dodaj nowy przedmiot' }}
+      </button>
+    </div>
+  
+    <div *ngIf="showAddSubjectForm">
+      <form (ngSubmit)="addSubject()" #subjectForm="ngForm">
+        <div class="mb-3">
+          <label for="subjectName" class="form-label">Nazwa przedmiotu</label>
+          <input type="text" class="form-control" id="subjectName" name="subjectName" required [(ngModel)]="newSubjectName">
+        </div>
+        <div class="mb-3">
+          <label for="subjectDescription" class="form-label">Opis przedmiotu</label>
+          <textarea class="form-control" id="subjectDescription" name="subjectDescription" [(ngModel)]="newSubjectDescription"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+        <button type="button" class="btn btn-danger ms-2" (click)="toggleAddSubjectForm()">Anuluj</button>
+      </form>
+    </div>
+  
+    <div *ngIf="!showAddSubjectForm">
+      <div *ngIf="availableSubjects && availableSubjects.length > 0; else noSubjects">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Nr</th>
+              <th scope="col">Nazwa Przedmiotu</th>
+              <th scope="col">Opis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let subject of availableSubjects; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ subject.subjectName }}</td>
+              <td>{{ subject.subjectDescription }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #noSubjects>
+        <div class="alert alert-info">
+          Brak dostępnych przedmiotów.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  

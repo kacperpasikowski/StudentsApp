@@ -1,0 +1,26 @@
+<div class="row">
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Username</th>
+                <th style="width: 40%;">Roles</th>
+                <th style="width: 30%;">Edit Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td class="mt-4">{{user.username}}</td>
+                <td class="mt-4">{{user.roles}}</td>
+                <td><button class="btn btn-primary ms-2" (click)="openRolesModal(user)">Edit Roles</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-center mt-3" *ngIf="pagination">
+    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+      [maxSize]="10" [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+      nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  
+    </pagination>
+  
+  </div>

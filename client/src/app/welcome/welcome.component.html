@@ -1,0 +1,9 @@
+<div *ngIf="user?.roles?.includes('Admin')">
+    <h2>Witamy, Administratorze!</h2>
+  </div>
+  <div *ngIf="user?.roles?.includes('Student')">
+    <h2>Witamy, Studencie!</h2>
+  </div>
+  <div *ngIf="user?.roles?.includes('Viewer')">
+    <h2>Witamy, Gościu!</h2>
+  </div>

@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card my-4">
+          <form [formGroup]="registerForm"
+            (ngSubmit)="onFormSubmit()"
+            class="card-body cardbody-color p-lg-5">
+            <div class="fs-1 text-center mb-4">Add Student</div>
+            <div class="mb-3">
+              <input type="text"
+                formControlName="firstName"
+                [class.is-invalid]="registerForm.get('firstName')?.errors && registerForm.get('firstName')?.touched"
+                class="form-control"
+                id="firstName" aria-describedby="firstName"
+                placeholder="First Name">
+              <div class="invalid-feedback">Please enter a first name.</div>
+            </div>
+            <div class="mb-3">
+              <input type="text"
+                formControlName="lastName"
+                [class.is-invalid]="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched"
+                class="form-control"
+                id="lastName" aria-describedby="lastName"
+                placeholder="Last Name">
+              <div class="invalid-feedback">Please enter a last name.</div>
+            </div>
+            <div class="mb-3">
+              <input type="text"
+                formControlName="email"
+                [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                class="form-control"
+                id="Email" aria-describedby="Email"
+                placeholder="Email">
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+            <div class="mb-3">
+              <input type="number"
+                formControlName="semester"
+                [class.is-invalid]="registerForm.get('semester')?.errors && registerForm.get('semester')?.touched"
+                class="form-control"
+                id="semester" placeholder="Semester" autocomplete="off">
+              <div class="invalid-feedback">Please enter a valid semester.</div>
+            </div>
+            <div class="mb-3">
+              <input type="number"
+                formControlName="wiek"
+                [class.is-invalid]="registerForm.get('wiek')?.errors && registerForm.get('wiek')?.touched"
+                class="form-control"
+                id="wiek" placeholder="Wiek" autocomplete="off">
+              <div class="invalid-feedback">Please enter a valid age.</div>
+            </div>
+            <div class="mb-3">
+              <input type="password"
+                formControlName="password"
+                [class.is-invalid]="registerForm.get('password')?.errors && registerForm.get('password')?.touched"
+                class="form-control"
+                id="password" placeholder="Password" autocomplete="off">
+              <div *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched" class="invalid-feedback">
+                Password is required.
+              </div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength'] && registerForm.get('password')?.touched" class="invalid-feedback">
+                Password must be at least 8 characters long.
+              </div>
+              <div *ngIf="registerForm.get('password')?.errors?.['maxlength'] && registerForm.get('password')?.touched" class="invalid-feedback">
+                Password cannot be more than 16 characters long.
+              </div>
+              <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength'] && registerForm.get('password')?.touched" class="invalid-feedback">
+                Password must contain at least one number, one uppercase letter, and one special character.
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-color px-5 my-4 w-100" [disabled]="isSubmitting">Add Student</button>
+            </div>
+            <div class="text-center">
+              <button type="button" routerLink="/" class="btn btn-danger px-5 w-100">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

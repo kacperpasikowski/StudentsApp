@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid mx-4 px-4">
+    <a href="" class="navbar-brand fs-4">Students App</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ng-container *ngIf="currentUser$ | async">
+          <li class="nav-item active" *ngIf="isAdmin$ | async" >
+            <a class="nav-link" routerLink="students">Students <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin$ | async">
+            <a class="nav-link" routerLink="admin/student/add">Add student</a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin$ | async">
+            <a class="nav-link" routerLink="subjects">Subjects</a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin$ | async">
+            <a class="nav-link" routerLink="users">Users</a>
+          </li>
+        </ng-container>
+      </ul>
+
+      <div *ngIf="(currentUser$ | async) as user" class="dropdown"  dropdown >
+        <img [src]="user.avatarUrl" class="user-avatar"  alt="">
+        <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>Welcome {{user.username| titlecase}} </a>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a class="dropdown-item" routerLink="/member/edit">Edit Profile</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </div>
+      <span class="d-flex" *ngIf="!(currentUser$ | async)">
+        <button class="btn btn-outline-secondary" routerLink="login">Login</button>
+      </span>
+    </div>
+  </div>
+</nav>

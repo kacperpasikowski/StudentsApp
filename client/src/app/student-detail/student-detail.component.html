@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">{{ student?.firstName }} {{ student?.lastName }}</h2>
+  
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <label class="me-2 fs-5" for="subjectSelect">Wybierz przedmiot:</label>
+          <select style="width: 200px;" class="form-select me-2" id="subjectSelect" [(ngModel)]="selectedSubjectName">
+            <option *ngFor="let subject of availableSubjects" [value]="subject.subjectName">
+              {{ subject.subjectName }}
+            </option>
+          </select>
+          <button class="btn btn-color" (click)="enrollStudent()" [disabled]="!selectedSubjectName">Zapisz na przedmiot</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-header">
+        <h4>Kursy, na które zapisany jest student</h4>
+      </div>
+      <div class="card-body">
+        <div *ngIf="studentCourses && studentCourses.length > 0; else noCourses">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let course of studentCourses">
+              <div class="d-flex justify-content-between">
+                <span>{{ course.subjectName }}</span>
+                <span class="text-muted">Rozpoczęty: {{ course.startingDate | date: 'longDate' }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <ng-template #noCourses>
+          <div class="alert alert-info text-center">
+            Student nie jest zapisany na żaden kurs.
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  

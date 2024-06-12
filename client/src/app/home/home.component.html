@@ -1,0 +1,22 @@
+<div *ngIf="user?.roles?.includes('Admin')">
+    <h2>Witamy, Administratorze!</h2>
+  </div>
+  <div *ngIf="user?.roles?.includes('Student')">
+    <h2>Witamy, Studencie!</h2>
+  </div>
+  <div *ngIf="user?.roles?.includes('Viewer')">
+    <h2>Witamy, Gościu!</h2>
+  </div>
+
+
+
+<div class="container mt-5" *ngIf="!user" >
+    <div   style="text-align: center;">
+        <h1>Witaj w aplikacji studentów</h1>
+        <p class="lead mt-2">Zaloguj się żeby zobaczyć jak działa!</p>
+        <div class="text-center mt-3">
+            <button  class="btn btn-primary btn-lg me-2" routerLink="login">Zaloguj się</button>
+            <button class="btn btn-primary btn-lg me-2" routerLink="register" >Zarejestruj się</button>
+        </div>
+    </div>
+</div>

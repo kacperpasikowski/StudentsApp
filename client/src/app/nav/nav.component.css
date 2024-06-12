@@ -1,0 +1,13 @@
+.dropdown-toggle, .dropdown-item{
+    cursor: pointer;
+    
+}
+.dropdown-menu{
+    margin-top: 18px;
+    margin-left: 20px;
+}
+
+.user-avatar{
+    width: 25px;
+    height: 25px;
+}
